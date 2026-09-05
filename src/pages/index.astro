@@ -39,6 +39,45 @@ const offerCatalogSchema = {
     description: product.summary,
   })),
 };
+
+const productImages = {
+  mcb: "/images/lazzen/product-mcb.jpg",
+  mccb: "/images/lazzen/product-mccb.png",
+  acb: "/images/lazzen/product-acb.jpg",
+};
+
+const services = [
+  {
+    icon: "选",
+    title: "选型与参数核对",
+    text: "根据电流、电压、分断能力、安装方式与图纸，协助确认良信/常熟对应型号。",
+  },
+  {
+    icon: "库",
+    title: "主推型号常备现货",
+    text: "良信全系列常备，微断、电子式塑壳、框架主推型号现货优先。",
+  },
+  {
+    icon: "运",
+    title: "全国配送",
+    text: "总部上海，面向全国工程项目、盘厂/成套厂与终端企业发货。",
+  },
+  {
+    icon: "技",
+    title: "技术支持与售后",
+    text: "参数疑问、到货核对与售后问题一站式协助处理。",
+  },
+  {
+    icon: "价",
+    title: "快速报价",
+    text: "报型号或图纸，快速确认规格、价格与交期。",
+  },
+  {
+    icon: "票",
+    title: "规范开票",
+    text: "支持按企业采购流程开票，方便对公结算与项目留档。",
+  },
+];
 ---
 
 <BaseLayout
@@ -46,44 +85,94 @@ const offerCatalogSchema = {
   description="上海弈藤实业有限公司是良信授权经销商，常备良信全系列与常熟开关高端断路器，主推微型断路器、电子式塑壳断路器、框架断路器，提供选型报价、配送与技术支持。"
   structuredData={[faqSchema, offerCatalogSchema]}
 >
-  <!-- ============ 首屏 ============ -->
+  <!-- ============ 首屏视频主视觉 ============ -->
   <section class="hero">
-    <div class="container">
-      <p class="eyebrow">良信（LAZZEN）授权经销商</p>
-      <h1>国产高端断路器<span>一站式供应</span></h1>
+    <div class="hero-media" aria-hidden="true">
+      <img src="/images/lazzen/hero-poster.webp" alt="" />
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/images/lazzen/hero-poster.webp"
+      >
+        <source src="/images/lazzen/hero.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="container hero-inner">
+      <p class="hero-kicker">LAZZEN 授权经销商 · 上海弈藤</p>
+      <h1>
+        国产高端断路器
+        <br />
+        <span>专业供应 · 快速交付</span>
+      </h1>
       <p class="hero-lead">
-        {SITE.name}常备良信全系列，主推微型断路器、电子式塑壳断路器与框架断路器；
-        同时供应常熟开关 CW、CM 系列。从选型、报价到现货配送与技术支持，一次沟通全解决。
+        常备良信全系列，主推微型断路器、电子式塑壳断路器与框架断路器；
+        同时供应常熟开关 CW、CM 系列。从选型、报价、现货到配送与技术支持，
+        为项目采购提供一站式可靠服务。
       </p>
       <div class="actions">
         <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
-          电话咨询：{SITE.contact.phoneDisplay}
+          电话咨询 {SITE.contact.phoneDisplay}
         </a>
-        <a class="btn btn--outline" href="/contact/">
-          微信询价
+        <a class="btn btn--outline" href="/products/">
+          浏览产品中心
         </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>02</strong>
+          <span>良信产品线授权</span>
+        </div>
+        <div class="hero-stat">
+          <strong>全系列</strong>
+          <span>良信产品常备</span>
+        </div>
+        <div class="hero-stat">
+          <strong>2</strong>
+          <span>国产高端品牌</span>
+        </div>
+        <div class="hero-stat">
+          <strong>全国</strong>
+          <span>配送与服务</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 主营产品 ============ -->
+  <!-- ============ 主推产品 ============ -->
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">主营产品</p>
-        <h2 class="section-title">常备现货，重点主推</h2>
+        <p class="eyebrow">Main Products</p>
+        <h2 class="section-title">主推产品，现货常备</h2>
         <p class="section-intro">
-          以下三类是弈藤的主推品类，详情来自良信官方产品介绍；良信全系列均可询价订货。
+          微断、电子式塑壳、框架是弈藤的重点品类；产品型号与资料来自良信官网，
+          完整选型可与弈藤确认。
         </p>
       </div>
       <div class="grid-3">
         {SITE.mainProducts.map((product) => (
-          <a class="card product-card" href={`/products/lazzen/${product.slug}/`}>
-            <span class="card-icon" aria-hidden="true">良</span>
-            <h3>{product.name}</h3>
-            <p class="product-series">{product.series}</p>
-            <p>{product.summary}</p>
-            <span class="card-more">查看产品介绍 →</span>
+          <a
+            class="card product-card"
+            href={`/products/lazzen/${product.slug}/`}
+          >
+            <div class="product-media">
+              <img
+                src={productImages[product.slug as keyof typeof productImages]}
+                alt={`良信 ${product.name} ${product.series}`}
+                loading="lazy"
+              />
+            </div>
+            <div class="product-body">
+              <h3>{product.name}</h3>
+              <p class="product-series">{product.series}</p>
+              <p>{product.summary}</p>
+              <span class="card-more">查看产品介绍 →</span>
+            </div>
           </a>
         ))}
       </div>
@@ -94,63 +183,40 @@ const offerCatalogSchema = {
   <section class="section section--soft">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">代理品牌</p>
+        <p class="eyebrow">Brands</p>
         <h2 class="section-title">国产高端断路器双品牌</h2>
       </div>
       <div class="grid-2">
         {SITE.brands.map((brand) => (
           <a class="card brand-card" href={`/products/${brand.slug}/`}>
-            <h3>{brand.fullName}</h3>
             <p class="brand-position">{brand.position}</p>
+            <h3>{brand.fullName}</h3>
             <p>{brand.description}</p>
             <span class="card-more">进入品牌产品页 →</span>
           </a>
         ))}
       </div>
       <p class="placeholder-note">
-        说明：常熟开关品牌页面按供货/主营品牌呈现，如需标注“官方授权”，请提供常熟侧授权文件后补充。
+        说明：常熟开关页面按供货/主营品牌呈现；如需标注“官方授权”，请提供常熟侧授权文件后补充。
       </p>
     </div>
   </section>
 
-  <!-- ============ 服务优势 ============ -->
+  <!-- ============ 服务能力 ============ -->
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">为什么选弈藤</p>
-        <h2 class="section-title">从选型到开票，服务闭环</h2>
+        <p class="eyebrow">Services</p>
+        <h2 class="section-title">从选型到开票，一站式交付</h2>
       </div>
       <div class="grid-3">
-        <article class="card">
-          <span class="card-icon" aria-hidden="true">✓</span>
-          <h3>授权正品</h3>
-          <p>持有良信低压元件与智能终端两条产品线授权，按授权范围供货与售后。</p>
-        </article>
-        <article class="card">
-          <span class="card-icon" aria-hidden="true">库</span>
-          <h3>良信全系列常备</h3>
-          <p>微断、电子式塑壳、框架等主推型号常备现货，紧急项目可快速响应。</p>
-        </article>
-        <article class="card">
-          <span class="card-icon" aria-hidden="true">算</span>
-          <h3>选型与报价</h3>
-          <p>支持按图纸、参数和项目场景选型，提供清晰报价与规格确认。</p>
-        </article>
-        <article class="card">
-          <span class="card-icon" aria-hidden="true">运</span>
-          <h3>全国配送</h3>
-          <p>总部在上海，可向全国工程项目、盘厂/成套厂与终端企业发货。</p>
-        </article>
-        <article class="card">
-          <span class="card-icon" aria-hidden="true">技</span>
-          <h3>技术支持</h3>
-          <p>协助核对产品参数、安装选型与替换型号，减少错订、错配风险。</p>
-        </article>
-        <article class="card">
-          <span class="card-icon" aria-hidden="true">票</span>
-          <h3>规范开票</h3>
-          <p>按企业采购流程提供开票服务，方便对公结算与项目留档。</p>
-        </article>
+        {services.map((service) => (
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">{service.icon}</span>
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -159,7 +225,7 @@ const offerCatalogSchema = {
   <section class="section section--soft">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">常见问题</p>
+        <p class="eyebrow">FAQ</p>
         <h2 class="section-title">客户常问</h2>
       </div>
       <div class="faq-list">
@@ -179,10 +245,16 @@ const offerCatalogSchema = {
   <!-- ============ CTA ============ -->
   <section class="section">
     <div class="container">
-      <div class="card" style="text-align:center;padding:3rem 2rem">
-        <h2 class="section-title" style="margin-bottom:.6rem">需要断路器询价或选型？</h2>
-        <p style="color:var(--body);max-width:640px;margin:0 auto 1.6rem">
-          报型号或图纸，弈藤帮你确认参数、交期与价格。
+      <div
+        class="card"
+        style="text-align:center;padding:3.4rem 2rem;background:radial-gradient(60% 120% at 50% 0%, rgba(0,216,195,.12), transparent 70%), linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.02))"
+      >
+        <p class="eyebrow" style="margin-inline:auto">Get A Quote</p>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.8rem">
+          需要断路器询价或选型？
+        </h2>
+        <p style="color:var(--body);max-width:640px;margin:0 auto 1.8rem">
+          报型号或图纸，弈藤帮你确认参数、现货与交期。
         </p>
         <div class="actions" style="justify-content:center">
           <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
