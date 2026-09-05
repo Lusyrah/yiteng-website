@@ -1,45 +1,53 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../config";
 
 const services = [
   {
-    title: "GEO 策略诊断",
-    text: "对品牌现状、目标用户问题、竞品 AI 回答表现做系统扫描，输出可执行的 GEO 优先级路线图。",
+    icon: "选",
+    title: "选型与技术核对",
+    text: "根据回路电流、系统电压、分断能力、安装方式与项目图纸，协助确认良信/常熟开关对应型号。",
   },
   {
-    title: "品牌内容与知识优化",
-    text: "围绕企业介绍、产品服务、解决方案等核心内容做结构化梳理，帮助 AI 准确理解与复述品牌信息。",
+    icon: "价",
+    title: "报价与交期确认",
+    text: "提供清晰报价，并确认现货、备货或订货交期，方便项目排期与成本核算。",
   },
   {
-    title: "AI 引用与信源建设",
-    text: "建立官网、百科、新闻媒体、行业平台、评测站点等多元权威信源，提升被 AI 引用的概率与准确性。",
+    icon: "库",
+    title: "现货与常备库存",
+    text: "良信全系列常备，主推微断、电子式塑壳、框架型号通常有现货，紧急需求可优先响应。",
   },
   {
-    title: "问答场景内容工程",
-    text: "分析各 AI 产品下与品牌相关的典型提问，按问题类型持续生产可验证、结构清晰的答案内容。",
+    icon: "运",
+    title: "全国配送",
+    text: "总部位于上海，可向全国工程项目、盘厂/成套厂、电工安装队与终端企业发货。",
   },
   {
-    title: "效果监测与竞对洞察",
-    text: "定期抽样主流 AI 入口的品牌提及率、推荐排名和竞品表现，形成数据报告并迭代策略。",
+    icon: "技",
+    title: "技术支持与售后",
+    text: "协助处理参数疑问、到货核对与售后问题，配合厂家售后流程跟进处理。",
   },
   {
-    title: "企业内训与咨询",
-    text: "帮助企业市场、品牌与内容团队建立 AI GEO 认知和可持续的内容生产机制。",
+    icon: "票",
+    title: "开票与采购流程",
+    text: "支持按企业采购要求开票，方便对公结算、项目归档与审计留痕。",
   },
 ];
 ---
 
 <BaseLayout
-  title="GEO 服务"
-  description="弈藤 AI GEO 服务：品牌 AI 识别、内容工程、权威信源、效果监测等一站式生成式引擎优化。"
+  title="服务支持"
+  description="上海弈藤为工程项目商、盘厂/成套厂、电工安装队与终端企业提供良信/常熟断路器选型、报价、现货、配送、技术支持与开票一站式服务。"
   path="/services/"
 >
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow">GEO 服务</p>
-      <h1>面向国内 AI 生态的可见度优化</h1>
+      <p class="eyebrow">服务支持</p>
+      <h1>断路器采购与项目配套服务</h1>
       <p>
-        服务框架先按以下模块搭建，具体服务名称、交付物与报价后续结合业务实际补充调整。
+        弈藤面向工程项目商、盘厂/成套厂、电工安装队和终端企业，
+        提供从选型报价到配送开票的完整采购服务。
       </p>
     </div>
   </section>
@@ -49,17 +57,50 @@ const services = [
       <div class="grid-3">
         {services.map((service) => (
           <article class="card">
+            <span class="card-icon" aria-hidden="true">{service.icon}</span>
             <h3>{service.title}</h3>
             <p>{service.text}</p>
           </article>
         ))}
       </div>
-      <div class="actions" style="margin-top:2.2rem">
-        <a class="btn btn--primary" href="/contact/">针对我的业务咨询</a>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card">
+          <h3>询价需要提供什么？</h3>
+          <p>
+            有明确型号的，直接报型号和数量；没有型号的，可提供电流、电压、极数、
+            分断能力或项目图纸，弈藤协助选型后再报价。
+          </p>
+        </div>
+        <div class="card">
+          <h3>采购流程</h3>
+          <p>
+            确认型号 → 报价与交期 → 下单付款 → 发货配送 → 到货核对 → 开票归档。
+            具体流程可按企业采购制度调整。
+          </p>
+        </div>
       </div>
-      <p class="placeholder-note">
-        TODO：补充各服务的详细说明、交付周期、案例与 FAQ。
-      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="text-align:center">
+        <h2 style="margin-bottom:.8rem">开始询价</h2>
+        <p style="color:var(--body);margin-bottom:1.4rem">
+          电话或微信发来需求，弈藤尽快回复。
+        </p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
+            {SITE.contact.phoneDisplay}
+          </a>
+          <a class="btn btn--outline" href="/contact/">添加微信</a>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

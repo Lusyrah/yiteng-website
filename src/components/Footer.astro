@@ -12,7 +12,7 @@ const year = new Date().getFullYear();
           <span class="brand-mark" aria-hidden="true">弈</span>
           <span class="brand-text">
             <strong style="color:#fff">{SITE.shortName}</strong>
-            <small style="color:#8ea3bd">YITENG · AI GEO</small>
+            <small style="color:#8ea3bd">LAZZEN 授权经销商</small>
           </span>
         </a>
         <p>{SITE.description}</p>
@@ -33,11 +33,14 @@ const year = new Date().getFullYear();
 
       <div>
         <h3>联系方式</h3>
-        <p style="margin-bottom:.3rem">电话：{SITE.contact.phone}</p>
+        <p style="margin-bottom:.3rem">
+          电话：<a href={`tel:${SITE.contact.phone}`}>{SITE.contact.phoneDisplay}</a>
+        </p>
         <p style="margin-bottom:.3rem">
           邮箱：
           <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>
         </p>
+        <p style="margin-bottom:.3rem">微信：{SITE.contact.wechatId}</p>
         <p style="margin-bottom:0">地址：{SITE.contact.address}</p>
       </div>
     </div>

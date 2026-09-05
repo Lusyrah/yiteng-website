@@ -27,11 +27,24 @@ const organizationSchema = {
   "@id": `${SITE.url}/#organization`,
   name: SITE.name,
   alternateName: SITE.shortName,
-  legalName: SITE.englishName,
   url: SITE.url,
   logo: `${SITE.url}/favicon.svg`,
   description: SITE.description,
   email: SITE.contact.email,
+  telephone: `+86-${SITE.contact.phone}`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "航川路18号 A栋 220",
+    addressLocality: "上海市浦东新区",
+    addressRegion: "上海市",
+    addressCountry: "CN",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: `+86-${SITE.contact.phone}`,
+    contactType: "销售与技术支持",
+    availableLanguage: "zh-CN",
+  },
 };
 
 const webSiteSchema = {

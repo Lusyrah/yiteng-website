@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE } from "../../config";
+import { LAZZEN_OFFICIAL } from "../../data/lazzen";
+---
+
+<BaseLayout
+  title="产品中心"
+  description="上海弈藤实业有限公司产品中心：良信全系列断路器、常熟开关 CW/CM 系列，主营微型断路器、电子式塑壳断路器与框架断路器。"
+  path="/products/"
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">产品中心</p>
+      <h1>良信全系列 · 常熟高端断路器</h1>
+      <p>
+        弈藤常备良信（LAZZEN）全系列产品，并供应常熟开关 CW、CM
+        等系列；主推微型断路器、电子式塑壳断路器和框架断路器。
+      </p>
+    </div>
+  </section>
+
+  <!-- 良信 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">品牌一</p>
+        <h2 class="section-title">良信（LAZZEN）</h2>
+        <p class="section-intro">
+          上海弈藤实业有限公司为良信低压元件产品线与智能终端产品线授权经销商，产品介绍以良信官网为准。
+        </p>
+      </div>
+      <div class="grid-3">
+        <a class="card product-card" href="/products/lazzen/mcb/">
+          <h3>微型断路器</h3>
+          <p>NDB / NDB6 系列，终端配电过载与短路保护。</p>
+          <span class="card-more">查看 →</span>
+        </a>
+        <a class="card product-card" href="/products/lazzen/mccb/">
+          <h3>电子式塑壳断路器</h3>
+          <p>NDM3E / NDM 系列，支持通讯与数字化管理。</p>
+          <span class="card-more">查看 →</span>
+        </a>
+        <a class="card product-card" href="/products/lazzen/acb/">
+          <h3>框架断路器</h3>
+          <p>NDW 系列万能式断路器，主电路保护与隔离。</p>
+          <span class="card-more">查看 →</span>
+        </a>
+      </div>
+      <div class="actions" style="margin-top:1.6rem">
+        <a class="btn btn--outline" href="/products/lazzen/">
+          查看良信全品类与授权信息
+        </a>
+        <a class="btn btn--outline" href={LAZZEN_OFFICIAL} target="_blank" rel="noopener">
+          良信官网
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常熟开关 -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">品牌二</p>
+        <h2 class="section-title">常熟开关</h2>
+        <p class="section-intro">
+          常熟开关制造有限公司是国产高端低压电器品牌，主打智能型万能式断路器与塑壳断路器。
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>CW 系列万能式断路器</h3>
+          <p>CW3 / CW6 智能型万能式断路器，面向高性能、高可靠配电需求。</p>
+        </article>
+        <article class="card">
+          <h3>CM 系列塑壳断路器</h3>
+          <p>CM3 / CM6 塑料外壳式断路器，覆盖各类低压配电与保护场景。</p>
+        </article>
+        <article class="card">
+          <h3>CA/CAP 自动转换开关</h3>
+          <p>面向常用电源与备用电源切换场景的 PC 级自动转换开关。</p>
+        </article>
+      </div>
+      <div class="actions" style="margin-top:1.6rem">
+        <a class="btn btn--outline" href="/products/changshu/">
+          查看常熟开关品牌页
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="text-align:center">
+        <h2 style="margin-bottom:.8rem">需要确认具体型号与现货？</h2>
+        <p style="color:var(--body);margin-bottom:1.4rem">
+          把型号、数量或应用场景发来，弈藤帮您核对参数并报价。
+        </p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
+            {SITE.contact.phoneDisplay}
+          </a>
+          <a class="btn btn--outline" href="/contact/">添加微信询价</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

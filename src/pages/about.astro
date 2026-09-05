@@ -1,17 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../config";
 ---
 
 <BaseLayout
-  title="关于我们"
-  description="了解弈藤实业有限公司：专注于国内主流 AI 的 GEO 生成式引擎优化服务。"
+  title="关于弈藤"
+  description="上海弈藤实业有限公司位于上海市浦东新区，是良信（LAZZEN）授权经销商，主营微型断路器、电子式塑壳断路器、框架断路器及常熟开关高端产品。"
   path="/about/"
 >
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow">关于我们</p>
-      <h1>弈藤实业有限公司</h1>
-      <p>关于公司沿革、团队背景、资质荣誉等内容待提供后补充。</p>
+      <p class="eyebrow">关于弈藤</p>
+      <h1>上海弈藤实业有限公司</h1>
+      <p>一家专注于国产高端断路器供应与服务的企业。</p>
     </div>
   </section>
 
@@ -21,35 +22,78 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <article class="card">
           <h2>公司简介</h2>
           <p>
-            <!-- TODO: 提供正式公司介绍、成立时间、注册信息、主营业务与团队背景 -->
-            弈藤实业有限公司是一家专注于 AI GEO（生成式引擎优化）的服务公司，
-            帮助中国品牌在国内主流 AI 产品中建立准确、可信、持续被推荐的数字形象。
-            详细公司介绍待补充。
+            上海弈藤实业有限公司注册于上海，经营地址位于上海市浦东新区航川路 18 号 A
+            栋 220，是良信（LAZZEN）授权经销商。
+          </p>
+          <p>
+            公司常备良信全系列产品，主推微型断路器、电子式塑壳断路器与框架断路器；
+            同时供应常熟开关 CW、CM 等国产高端断路器，服务工程项目商、盘厂/成套厂、
+            电工安装队与终端企业。
           </p>
         </article>
         <article class="card">
-          <h2>我们为什么做 AI GEO</h2>
+          <h2>企业信息</h2>
           <p>
-            <!-- TODO: 补充创始团队观点或愿景 -->
-            越来越多用户通过 AI 获取答案，品牌官网不再是唯一入口。
-            弈藤希望帮助中国企业主动管理在 AI 时代的“第一印象”。
-            核心理念与故事待补充。
+            公司名称：{SITE.name}
+            <br />
+            经营地址：{SITE.contact.address}
+            <br />
+            联系电话：{SITE.contact.phoneDisplay}
+            <br />
+            邮箱：{SITE.contact.email}
+            <br />
+            服务说明：{SITE.contact.serviceNote}
           </p>
         </article>
       </div>
+    </div>
+  </section>
 
-      <div class="grid-3" style="margin-top:1.3rem">
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">授权与合作</p>
+        <h2 class="section-title">良信经销商授权</h2>
+        <p class="section-intro">
+          弈藤持有的良信授权如下，可在业务洽谈中出示授权文件：
+        </p>
+      </div>
+      <div class="grid-2">
+        {SITE.authorizations.map((auth) => (
+          <article class="card">
+            <h3>{auth.productLine}</h3>
+            <p>
+              授权编号：{auth.number}
+              <br />
+              签发单位：{auth.issuer}
+              <br />
+              授权范围：{auth.brand} 品牌 {auth.scope}
+              <br />
+              有效期：{auth.validFrom} 至 {auth.validTo}
+            </p>
+          </article>
+        ))}
+      </div>
+      <p class="placeholder-note">
+        注：按授权书文本，授权范围为上海区域经销商；如需在官网直接表述“全国授权”，请提供覆盖全国的授权文件后再修改。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
         <div class="card">
-          <h3>使命</h3>
-          <p>帮助中国品牌在 AI 时代被准确理解与优先选择。（待补充）</p>
+          <h3>正品保障</h3>
+          <p>授权渠道采购，可按需提供授权证明与厂家质量凭证。</p>
         </div>
         <div class="card">
-          <h3>愿景</h3>
-          <p>成为国内 AI GEO 领域值得信赖的专业服务商。（待补充）</p>
+          <h3>响应速度</h3>
+          <p>主推型号常备现货，报价与交期确认尽量快速。</p>
         </div>
         <div class="card">
-          <h3>价值观</h3>
-          <p>专业、透明、长期主义。（待补充）</p>
+          <h3>长期合作</h3>
+          <p>面向盘厂、工程商与终端企业建立长期稳定供货关系。</p>
         </div>
       </div>
     </div>

@@ -2,156 +2,195 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE } from "../config";
 
-const serviceSchema = {
+const faqItems = [
+  {
+    q: "上海弈藤实业有限公司是良信授权经销商吗？",
+    a: "是。上海弈藤实业有限公司持有上海智慧良信技术服务有限公司低压元件产品线、上海良信智能电工有限公司智能终端产品线的经销商授权，负责良信品牌产品的市场开拓、产品销售与售后服务。",
+  },
+  {
+    q: "弈藤主要供应哪些断路器产品？",
+    a: "弈藤常备良信全系列，主推微型断路器（NDB/NDB6 系列）、电子式塑壳断路器（NDM/NDM3E 系列）和框架断路器（NDW 系列）；同时供应常熟开关 CW、CM 等高端断路器。",
+  },
+  {
+    q: "如何向弈藤询价或采购？",
+    a: "可直接拨打 18918545608，或添加微信 wxid_5lr2fabolo0q12 询价。弈藤提供选型、报价、现货、配送、技术支持与开票服务。",
+  },
+];
+
+const faqSchema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  serviceType: "AI GEO（生成式引擎优化）",
-  name: "弈藤 AI GEO 服务",
-  description:
-    "面向国内主流 AI 搜索与对话助手的品牌可见度与推荐优化服务。",
-  provider: { "@id": `${SITE.url}/#organization` },
-  areaServed: "CN",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
 };
 
-const services = [
-  {
-    num: "01",
-    title: "品牌 AI 识别优化",
-    text: "梳理品牌实体信息、业务口径与资质信源，让 AI 能准确理解“你是谁、做什么、凭什么可信”。（内容待补充）",
-  },
-  {
-    num: "02",
-    title: "高质量内容建设",
-    text: "围绕用户会向 AI 提问的真实场景，生产结构化、可验证、易被引用的内容资产。（内容待补充）",
-  },
-  {
-    num: "03",
-    title: "权威信源与引用优化",
-    text: "把品牌信息铺设到知识图谱、百科、媒体与行业站点等 AI 高频参考信源。（内容待补充）",
-  },
-  {
-    num: "04",
-    title: "AI 效果监测与复盘",
-    text: "持续追踪品牌在国内 AI 产品中的提及率、回答准确度与推荐占比，迭代策略。（内容待补充）",
-  },
-];
-
-const steps = [
-  {
-    title: "现状与品牌扫描",
-    text: "先摸清品牌在主要 AI 入口目前“被怎么回答”。",
-  },
-  {
-    title: "策略与内容规划",
-    text: "确定目标问题、人群场景与内容信源地图。",
-  },
-  {
-    title: "结构化内容落地",
-    text: "分批建设可验证、易引用的品牌内容与页面。",
-  },
-  {
-    title: "监测迭代",
-    text: "用真实问答反馈持续优化回答质量与推荐表现。",
-  },
-];
+const offerCatalogSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  name: "弈藤断路器供应品类",
+  itemListElement: SITE.mainProducts.map((product, index) => ({
+    "@type": "Product",
+    position: index + 1,
+    name: `${product.brand} ${product.name}`,
+    brand: { "@type": "Brand", name: product.brand },
+    description: product.summary,
+  })),
+};
 ---
 
-<BaseLayout structuredData={[serviceSchema]}>
+<BaseLayout
+  title="良信（LAZZEN）授权经销商 · 断路器一站式供应"
+  description="上海弈藤实业有限公司是良信授权经销商，常备良信全系列与常熟开关高端断路器，主推微型断路器、电子式塑壳断路器、框架断路器，提供选型报价、配送与技术支持。"
+  structuredData={[faqSchema, offerCatalogSchema]}
+>
   <!-- ============ 首屏 ============ -->
   <section class="hero">
     <div class="container">
-      <p class="eyebrow">AI GEO · 生成式引擎优化</p>
-      <h1>让品牌在<span>国内主流 AI</span>的回答中被看见、被引用、被推荐</h1>
+      <p class="eyebrow">良信（LAZZEN）授权经销商</p>
+      <h1>国产高端断路器<span>一站式供应</span></h1>
       <p class="hero-lead">
-        弈藤实业面向百度 AI 搜索、豆包、Kimi、DeepSeek、通义等国内 AI
-        产品，围绕品牌识别、权威信源与高质量内容，帮助企业建立长期、可信的
-        AI 可见度。
+        {SITE.name}常备良信全系列，主推微型断路器、电子式塑壳断路器与框架断路器；
+        同时供应常熟开关 CW、CM 系列。从选型、报价到现货配送与技术支持，一次沟通全解决。
       </p>
       <div class="actions">
-        <a class="btn btn--primary" href="/contact/">获取 GEO 诊断</a>
-        <a class="btn btn--outline" href="/services/">了解服务内容</a>
+        <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
+          电话咨询：{SITE.contact.phoneDisplay}
+        </a>
+        <a class="btn btn--outline" href="/contact/">
+          微信询价
+        </a>
       </div>
-      <!-- TODO: 首屏文案/主视觉/数据等真实素材到位后替换 -->
     </div>
   </section>
 
-  <!-- ============ 覆盖的 AI 入口 ============ -->
+  <!-- ============ 主营产品 ============ -->
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">覆盖范围</p>
-        <h2 class="section-title">国内主流 AI 产品与入口</h2>
+        <p class="eyebrow">主营产品</p>
+        <h2 class="section-title">常备现货，重点主推</h2>
         <p class="section-intro">
-          我们在不同 AI 的回答机制与信源偏好上做针对性适配，平台清单可持续扩展。
+          以下三类是弈藤的主推品类，详情来自良信官方产品介绍；良信全系列均可询价订货。
         </p>
       </div>
-      <ul class="platform-chips" style="list-style:none;padding:0">
-        {SITE.aiPlatforms.map((platform) => <li class="chip">{platform}</li>)}
-      </ul>
+      <div class="grid-3">
+        {SITE.mainProducts.map((product) => (
+          <a class="card product-card" href={`/products/lazzen/${product.slug}/`}>
+            <span class="card-icon" aria-hidden="true">良</span>
+            <h3>{product.name}</h3>
+            <p class="product-series">{product.series}</p>
+            <p>{product.summary}</p>
+            <span class="card-more">查看产品介绍 →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 品牌 ============ -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">代理品牌</p>
+        <h2 class="section-title">国产高端断路器双品牌</h2>
+      </div>
+      <div class="grid-2">
+        {SITE.brands.map((brand) => (
+          <a class="card brand-card" href={`/products/${brand.slug}/`}>
+            <h3>{brand.fullName}</h3>
+            <p class="brand-position">{brand.position}</p>
+            <p>{brand.description}</p>
+            <span class="card-more">进入品牌产品页 →</span>
+          </a>
+        ))}
+      </div>
       <p class="placeholder-note">
-        TODO：确认最终重点覆盖的平台，可在 src/config.ts 中增删。
+        说明：常熟开关品牌页面按供货/主营品牌呈现，如需标注“官方授权”，请提供常熟侧授权文件后补充。
       </p>
     </div>
   </section>
 
-  <!-- ============ 服务概览 ============ -->
-  <section class="section section--soft">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">我们能做什么</p>
-        <h2 class="section-title">从“能被搜到”到“会被推荐”</h2>
-        <p class="section-intro">
-          GEO 不是堆关键词，而是让 AI 在组织答案时愿意引用你、认可你、推荐你。
-        </p>
-      </div>
-      <div class="grid-2">
-        {services.map((service) => (
-          <article class="card">
-            <span class="card-icon" aria-hidden="true">{service.num}</span>
-            <h3>{service.title}</h3>
-            <p>{service.text}</p>
-          </article>
-        ))}
-      </div>
-      <div class="actions" style="margin-top:2.2rem">
-        <a class="btn btn--outline" href="/services/">查看完整服务方案</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 服务流程 ============ -->
+  <!-- ============ 服务优势 ============ -->
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">服务流程</p>
-        <h2 class="section-title">四步建立 AI 时代的品牌资产</h2>
+        <p class="eyebrow">为什么选弈藤</p>
+        <h2 class="section-title">从选型到开票，服务闭环</h2>
       </div>
-      <div class="steps">
-        {steps.map((step, index) => (
-          <div class="step">
-            <span class="step-num" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-            <h3>{step.title}</h3>
-            <p style="color:var(--body)">{step.text}</p>
-          </div>
-        ))}
+      <div class="grid-3">
+        <article class="card">
+          <span class="card-icon" aria-hidden="true">✓</span>
+          <h3>授权正品</h3>
+          <p>持有良信低压元件与智能终端两条产品线授权，按授权范围供货与售后。</p>
+        </article>
+        <article class="card">
+          <span class="card-icon" aria-hidden="true">库</span>
+          <h3>良信全系列常备</h3>
+          <p>微断、电子式塑壳、框架等主推型号常备现货，紧急项目可快速响应。</p>
+        </article>
+        <article class="card">
+          <span class="card-icon" aria-hidden="true">算</span>
+          <h3>选型与报价</h3>
+          <p>支持按图纸、参数和项目场景选型，提供清晰报价与规格确认。</p>
+        </article>
+        <article class="card">
+          <span class="card-icon" aria-hidden="true">运</span>
+          <h3>全国配送</h3>
+          <p>总部在上海，可向全国工程项目、盘厂/成套厂与终端企业发货。</p>
+        </article>
+        <article class="card">
+          <span class="card-icon" aria-hidden="true">技</span>
+          <h3>技术支持</h3>
+          <p>协助核对产品参数、安装选型与替换型号，减少错订、错配风险。</p>
+        </article>
+        <article class="card">
+          <span class="card-icon" aria-hidden="true">票</span>
+          <h3>规范开票</h3>
+          <p>按企业采购流程提供开票服务，方便对公结算与项目留档。</p>
+        </article>
       </div>
-      <!-- TODO: 结合真实交付流程补充每阶段示例产出 -->
     </div>
   </section>
 
-  <!-- ============ 结尾 CTA ============ -->
+  <!-- ============ 常见问题 ============ -->
   <section class="section section--soft">
     <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">常见问题</p>
+        <h2 class="section-title">客户常问</h2>
+      </div>
+      <div class="faq-list">
+        {faqItems.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+      <p class="placeholder-note">
+        更多问答见 <a href="/faq/">常见问题页</a>。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section">
+    <div class="container">
       <div class="card" style="text-align:center;padding:3rem 2rem">
-        <h2 class="section-title" style="margin-bottom:.6rem">
-          想看看你的品牌现在被国内 AI 怎么回答？
-        </h2>
+        <h2 class="section-title" style="margin-bottom:.6rem">需要断路器询价或选型？</h2>
         <p style="color:var(--body);max-width:640px;margin:0 auto 1.6rem">
-          联系我们，我们可以先做一轮主流 AI 入口的品牌现状扫描，再讨论优化方案。
+          报型号或图纸，弈藤帮你确认参数、交期与价格。
         </p>
         <div class="actions" style="justify-content:center">
-          <a class="btn btn--primary" href="/contact/">预约咨询</a>
-          <a class="btn btn--outline" href="/about/">了解弈藤</a>
+          <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
+            拨打 {SITE.contact.phoneDisplay}
+          </a>
+          <a class="btn btn--outline" href="/contact/">
+            添加微信询价
+          </a>
         </div>
       </div>
     </div>

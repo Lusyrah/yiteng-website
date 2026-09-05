@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { SITE } from "../../../config";
+import { acbSeries, LAZZEN_OFFICIAL } from "../../../data/lazzen";
+
+const faqItems = [
+  {
+    q: "良信 NDW 框架断路器有哪些规格？",
+    a: "NDW3 系列额定电流覆盖 200～7500A，还有 DC1000/1500V 直流型 NDW3Z、新能源与行业专用型号；具体规格需结合项目电流、分断和安装方式确认。",
+  },
+  {
+    q: "哪里可以采购良信 NDW 框架断路器？",
+    a: "上海弈藤实业有限公司是良信授权经销商，可供应 NDW 系列框架断路器并提供选型、报价、配送与技术支持，适合工程项目与盘厂配套。",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<BaseLayout
+  title="良信框架断路器 NDW"
+  description="上海弈藤供应良信（LAZZEN）框架断路器 NDW3、NDW3Z、NDW2G 系列，额定电流至 7500A，用于低压主电路保护与隔离；授权经销商可询价供货。"
+  path="/products/lazzen/acb/"
+  structuredData={[faqSchema]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">良信 · 低压电器</p>
+      <h1>框架断路器（ACB / 万能式断路器）</h1>
+      <p>
+        NDW 系列框架断路器用于低压配电系统主电路的电能分配与保护，
+        是大型建筑、工业、数据中心和新能源项目常用的核心开关电器。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">主推系列</p>
+        <h2 class="section-title">弈藤常备的框架型号</h2>
+        <p class="section-intro">型号介绍整理自良信官网，项目选型建议直接联系弈藤技术协助确认。</p>
+      </div>
+      <div style="display:grid;gap:1.2rem">
+        {acbSeries.map((series) => (
+          <article class="card">
+            <h3>{series.name}</h3>
+            <p>{series.summary}</p>
+            <p class="placeholder-note" style="margin-bottom:0">
+              官方资料：
+              <a href={series.page} target="_blank" rel="noopener">
+                良信官网 {series.name}
+              </a>
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">常见问题</p>
+        <h2 class="section-title">关于框架断路器</h2>
+      </div>
+      <div class="faq-list">
+        {faqItems.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="text-align:center">
+        <h2 style="margin-bottom:.8rem">框架断路器项目询价？</h2>
+        <p style="color:var(--body);margin-bottom:1.4rem">
+          提供项目电流、系统电压与图纸，弈藤帮你做规格确认与报价。
+        </p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
+            {SITE.contact.phoneDisplay}
+          </a>
+          <a class="btn btn--outline" href="/contact/">微信询价</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -5,15 +5,15 @@ import { SITE } from "../config";
 
 <BaseLayout
   title="联系我们"
-  description="联系弈藤实业，获取 AI GEO 品牌现状诊断与优化方案。"
+  description="联系上海弈藤实业有限公司询价良信/常熟断路器：电话 18918545608，微信 wxid_5lr2fabolo0q12，地址上海市浦东新区航川路18号 A栋 220。"
   path="/contact/"
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">联系我们</p>
-      <h1>聊聊你的品牌在 AI 里“被怎么回答”</h1>
+      <h1>询价、选型与项目配套，直接联系弈藤</h1>
       <p>
-        留个联系方式，我们可以先聊聊你的行业、目标客户与目前遇到的主要问题。
+        工程项目商、盘厂/成套厂、电工安装队和终端企业均可通过电话或微信与我们联系。
       </p>
     </div>
   </section>
@@ -22,34 +22,43 @@ import { SITE } from "../config";
     <div class="container">
       <div class="grid-2">
         <div class="contact-list">
-          <div class="contact-item">
+          <div class="contact-item contact-item--highlight">
             <strong>电话</strong>
-            <a href={`tel:${SITE.contact.phone.replace(/-/g, "")}`}>{SITE.contact.phone}</a>
+            <a href={`tel:${SITE.contact.phone}`}>{SITE.contact.phoneDisplay}</a>
+            <span>询价 / 选型 / 售后</span>
+          </div>
+          <div class="contact-item">
+            <strong>微信</strong>
+            <span>{SITE.contact.wechatId}</span>
+            <span>添加好友时请备注“断路器询价”</span>
           </div>
           <div class="contact-item">
             <strong>邮箱</strong>
             <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>
           </div>
           <div class="contact-item">
-            <strong>企业微信</strong>
-            <span>{SITE.contact.wechat}</span>
-          </div>
-          <div class="contact-item">
             <strong>地址</strong>
             <span>{SITE.contact.address}</span>
+            <span>（上海市浦东新区）</span>
           </div>
         </div>
 
-        <article class="card">
-          <h2>下一步</h2>
+        <div class="card">
+          <h2>联系前可以准备这些信息</h2>
           <p>
-            正式联系方式与咨询流程确认后，这里会增加可用的在线表单（静态站可接入
-            免费/低成本的第三方表单服务，或后续增加后端页面）。
+            有明确型号：直接报型号与数量，例如“良信 NDB2Z-63 多少只”。
+          </p>
+          <p>
+            无明确型号：提供额定电流、极数、分断能力、系统电压或项目图纸，
+            弈藤协助选型后再报价。
+          </p>
+          <p>
+            项目采购：如有货期、开票或招投标配合要求，可一并说明。
           </p>
           <p class="placeholder-note" style="margin-bottom:0">
-            TODO：补充商务负责人、咨询入口与企业微信二维码。
+            页面目前只展示电话和微信，如需在线留言可后续增加表单服务。
           </p>
-        </article>
+        </div>
       </div>
     </div>
   </section>

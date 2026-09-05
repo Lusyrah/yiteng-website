@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { SITE } from "../../../config";
+import { lazzenCategories, LAZZEN_OFFICIAL } from "../../../data/lazzen";
+---
+
+<BaseLayout
+  title="良信（LAZZEN）产品"
+  description="上海弈藤实业有限公司为良信（LAZZEN）授权经销商，代理低压元件与智能终端产品线，常备框架断路器、塑壳断路器、微型断路器、双电源等全系列产品。"
+  path="/products/lazzen/"
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">良信（LAZZEN）</p>
+      <h1>良信授权经销商产品页</h1>
+      <p>
+        上海弈藤实业有限公司持有良信低压元件产品线（编号 100397）与智能终端产品线（编号
+        C000310）经销商授权，负责良信品牌产品的市场开拓、产品销售与售后服务。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">产品类别</p>
+        <h2 class="section-title">常备良信全系列</h2>
+      </div>
+      <div class="grid-3">
+        {lazzenCategories.map((category) => (
+          <a class="card product-card" href={category.page} target="_blank" rel="noopener">
+            <h3>{category.name}</h3>
+            <p>{category.summary}</p>
+            <span class="card-more">良信官网查看 →</span>
+          </a>
+        ))}
+      </div>
+      <p class="placeholder-note">
+        注：上图产品分类与介绍整理自良信官网，具体选型请以良信官方样本、证书与选型软件为准。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">主推系列</p>
+        <h2 class="section-title">常备现货型号</h2>
+        <p class="section-intro">以下主推系列通常有现货或较短交期，具体请电话/微信确认。</p>
+      </div>
+      <div class="grid-3">
+        <a class="card product-card" href="/products/lazzen/mcb/">
+          <h3>微型断路器</h3>
+          <p>NDB / NDB6 系列，含 1U、直流、物联网剩余电流等细分型号。</p>
+          <span class="card-more">查看主推型号 →</span>
+        </a>
+        <a class="card product-card" href="/products/lazzen/mccb/">
+          <h3>电子式塑壳断路器</h3>
+          <p>NDM3E / NDM 系列，可增选通讯模块与物联功能。</p>
+          <span class="card-more">查看主推型号 →</span>
+        </a>
+        <a class="card product-card" href="/products/lazzen/acb/">
+          <h3>框架断路器</h3>
+          <p>NDW 系列万能式断路器，覆盖交流与直流应用。</p>
+          <span class="card-more">查看主推型号 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">授权信息</p>
+        <h2 class="section-title">弈藤持有的良信授权</h2>
+      </div>
+      <div class="grid-2">
+        {SITE.authorizations.map((auth) => (
+          <article class="card">
+            <h3>{auth.productLine}</h3>
+            <p>
+              授权编号：{auth.number}
+              <br />
+              签发单位：{auth.issuer}
+              <br />
+              授权类型：{auth.brand} 品牌 {auth.scope}
+              <br />
+              有效期：{auth.validFrom} 至 {auth.validTo}
+            </p>
+          </article>
+        ))}
+      </div>
+      <p class="placeholder-note">
+        授权证书扫描件可在线下合作时出示；如需在官网公开下载，请先确认是否对外展示。
+      </p>
+      <div class="actions" style="margin-top:1.6rem">
+        <a class="btn btn--primary" href="/contact/">询价良信产品</a>
+        <a class="btn btn--outline" href={LAZZEN_OFFICIAL} target="_blank" rel="noopener">
+          访问良信官网
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

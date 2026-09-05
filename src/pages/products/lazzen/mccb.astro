@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { SITE } from "../../../config";
+import { mccbSeries, LAZZEN_OFFICIAL } from "../../../data/lazzen";
+
+const faqItems = [
+  {
+    q: "电子式塑壳断路器和普通塑壳有什么区别？",
+    a: "电子式塑壳断路器采用电子脱扣单元，整定更灵活，部分型号支持通讯模块和物联网功能，更适合配电数字化管理。弈藤主推良信 NDM3E 系列。",
+  },
+  {
+    q: "哪里买良信 NDM3E 电子式塑壳断路器？",
+    a: "上海弈藤实业有限公司是良信授权经销商，常备 NDM3E 等电子式塑壳断路器，可提供选型、报价、现货配送与技术支持。",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<BaseLayout
+  title="良信电子式塑壳断路器 NDM3E"
+  description="上海弈藤供应良信（LAZZEN）电子式塑壳断路器 NDM3E、NDM 系列，额定电流至 1600A，可增选通讯模块；授权经销商提供选型报价与现货。"
+  path="/products/lazzen/mccb/"
+  structuredData={[faqSchema]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">良信 · 低压电器</p>
+      <h1>电子式塑壳断路器（MCCB）</h1>
+      <p>
+        电子式塑壳断路器用于低压配电线路的过载、短路保护与电动机保护，
+        相比热磁式产品整定更精确，并可扩展通讯能力，是弈藤的重点常备品类。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">主推系列</p>
+        <h2 class="section-title">弈藤常备的塑壳型号</h2>
+        <p class="section-intro">型号介绍整理自良信官网，完整选型表与样本可向弈藤索取。</p>
+      </div>
+      <div style="display:grid;gap:1.2rem">
+        {mccbSeries.map((series) => (
+          <article class="card">
+            <h3>{series.name}</h3>
+            <p>{series.summary}</p>
+            <p class="placeholder-note" style="margin-bottom:0">
+              官方资料：
+              <a href={series.page} target="_blank" rel="noopener">
+                良信官网 {series.name}
+              </a>
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">常见问题</p>
+        <h2 class="section-title">关于电子式塑壳</h2>
+      </div>
+      <div class="faq-list">
+        {faqItems.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="text-align:center">
+        <h2 style="margin-bottom:.8rem">需要电子式塑壳报价？</h2>
+        <p style="color:var(--body);margin-bottom:1.4rem">
+          报电流规格、脱扣方式或图纸，弈藤帮你核对型号。
+        </p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
+            {SITE.contact.phoneDisplay}
+          </a>
+          <a class="btn btn--outline" href="/contact/">微信询价</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

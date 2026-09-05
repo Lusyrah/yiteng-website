@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE } from "../../config";
+
+const changshuProducts = [
+  {
+    name: "CW 系列智能型万能式断路器",
+    series: "CW3 / CW6",
+    summary:
+      "面向高性能、高可靠低压配电需求的智能型万能式断路器，适用于主电路电能分配与线路、电源设备保护。",
+  },
+  {
+    name: "CM 系列塑料外壳式断路器",
+    series: "CM3 / CM6",
+    summary:
+      "覆盖各类低压配电与电动机保护场景的塑壳断路器，新一代 CM6 强调小型化、高性能、模块化与智能化。",
+  },
+  {
+    name: "自动转换开关电器",
+    series: "CA / CAP 系列",
+    summary:
+      "PC 级自动转换开关电器，适用于常用电源与备用电源的自动切换，保障供电连续性。",
+  },
+];
+---
+
+<BaseLayout
+  title="常熟开关 CW/CM 系列"
+  description="上海弈藤供应常熟开关制造有限公司 CW 系列智能型万能式断路器、CM 系列塑壳断路器等高端国产低压电器，提供选型报价与配送服务。"
+  path="/products/changshu/"
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">常熟开关制造有限公司</p>
+      <h1>高端国产断路器 · 常熟开关</h1>
+      <p>
+        弈藤主营良信与常熟开关两大国产高端断路器品牌。常熟开关系列以
+        CW 智能型万能式断路器、CM 塑壳断路器为代表，主要面向高要求配电项目。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">供应产品</p>
+        <h2 class="section-title">常熟开关主营系列</h2>
+      </div>
+      <div class="grid-3">
+        {changshuProducts.map((product) => (
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">常</span>
+            <h3>{product.name}</h3>
+            <p class="product-series">{product.series}</p>
+            <p>{product.summary}</p>
+          </article>
+        ))}
+      </div>
+      <p class="placeholder-note">
+        如需按具体系列补充产品参数与官方链接，可在确定常熟侧供货范围后继续完善。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card">
+          <h3>品牌官方</h3>
+          <p>
+            <a href="https://www.riyue.com.cn/" target="_blank" rel="noopener">
+              常熟开关制造有限公司官网 riyue.com.cn
+            </a>
+          </p>
+          <p class="placeholder-note" style="margin-bottom:0">
+            具体产品认证与选型以常熟开关官方资料为准。
+          </p>
+        </div>
+        <div class="card">
+          <h3>向弈藤询价</h3>
+          <p>
+            有 CW/CM/CA 等型号需求，可联系弈藤确认供货、交期与价格。
+          </p>
+          <div class="actions" style="margin-top:1rem">
+            <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
+              {SITE.contact.phoneDisplay}
+            </a>
+            <a class="btn btn--outline" href="/contact/">微信询价</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
