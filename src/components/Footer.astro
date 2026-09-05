@@ -1,0 +1,51 @@
+---
+import { SITE } from "../config";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label={`${SITE.name}首页`}>
+          <span class="brand-mark" aria-hidden="true">弈</span>
+          <span class="brand-text">
+            <strong style="color:#fff">{SITE.shortName}</strong>
+            <small style="color:#8ea3bd">YITENG · AI GEO</small>
+          </span>
+        </a>
+        <p>{SITE.description}</p>
+      </div>
+
+      <nav aria-label="页脚导航">
+        <h3>快速导航</h3>
+        <ul class="footer-links">
+          {
+            SITE.nav.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div>
+        <h3>联系方式</h3>
+        <p style="margin-bottom:.3rem">电话：{SITE.contact.phone}</p>
+        <p style="margin-bottom:.3rem">
+          邮箱：
+          <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>
+        </p>
+        <p style="margin-bottom:0">地址：{SITE.contact.address}</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {year} {SITE.name} 保留所有权利</span>
+      <!-- TODO: 网站上线并完成 ICP 备案后，在下面展示备案号 -->
+      <span>备案信息待补充</span>
+    </div>
+  </div>
+</footer>

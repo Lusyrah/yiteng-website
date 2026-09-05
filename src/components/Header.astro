@@ -1,0 +1,44 @@
+---
+import { SITE } from "../config";
+
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+
+const isActive = (href: string) => {
+  if (href === "/") return currentPath === "/";
+  return currentPath === href || currentPath.startsWith(href);
+};
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label={`${SITE.name}首页`}>
+      <span class="brand-mark" aria-hidden="true">弈</span>
+      <span class="brand-text">
+        <strong>{SITE.shortName}</strong>
+        <small>YITENG · AI GEO</small>
+      </span>
+    </a>
+
+    <input class="nav-toggle-input" type="checkbox" id="site-nav-toggle" />
+    <label class="nav-toggle" for="site-nav-toggle" aria-label="打开导航菜单">
+      <span aria-hidden="true"></span>
+    </label>
+
+    <nav class="site-nav" aria-label="主导航">
+      <ul>
+        {
+          SITE.nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

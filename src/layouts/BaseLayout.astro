@@ -1,0 +1,85 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE } from "../config";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  structuredData?: Array<Record<string, unknown>>;
+}
+
+const {
+  title = SITE.name,
+  description = SITE.description,
+  path = "/",
+  structuredData = [],
+} = Astro.props;
+
+const pageTitle = title === SITE.name ? SITE.name : `${title} | ${SITE.name}`;
+const canonical = new URL(path, SITE.url).href;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${SITE.url}/#organization`,
+  name: SITE.name,
+  alternateName: SITE.shortName,
+  legalName: SITE.englishName,
+  url: SITE.url,
+  logo: `${SITE.url}/favicon.svg`,
+  description: SITE.description,
+  email: SITE.contact.email,
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE.url}/#website`,
+  name: SITE.name,
+  url: SITE.url,
+  inLanguage: "zh-CN",
+  publisher: { "@id": `${SITE.url}/#organization` },
+};
+
+const schemas = [organizationSchema, webSiteSchema, ...structuredData];
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0f766e" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- 国内 AI 抓取与社交分享基础标签，后续可按页面补充 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+
+    {schemas.map((schema) => (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema)}
+      />
+    ))}
+  </head>
+  <body>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

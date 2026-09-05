@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="案例"
+  description="弈藤实业 AI GEO 服务案例展示。"
+  path="/cases/"
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">客户案例</p>
+      <h1>真实场景中的 AI 可见度变化</h1>
+      <p>案例页面结构已预留，待客户脱敏资料和效果数据确认后逐条补充。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
+        {
+          [1, 2, 3].map((item) => (
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">{String(item).padStart(2, "0")}</span>
+              <h3>案例标题待补充</h3>
+              <p>行业、目标 AI、优化周期、核心动作与效果指标待补充。</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="empty-state" style="margin-top:1.5rem">
+        <strong>案例库整理中</strong>
+        <p>拿到真实项目资料后，这里会替换为结构化案例详情页。</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

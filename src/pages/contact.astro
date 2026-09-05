@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../config";
+---
+
+<BaseLayout
+  title="联系我们"
+  description="联系弈藤实业，获取 AI GEO 品牌现状诊断与优化方案。"
+  path="/contact/"
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">联系我们</p>
+      <h1>聊聊你的品牌在 AI 里“被怎么回答”</h1>
+      <p>
+        留个联系方式，我们可以先聊聊你的行业、目标客户与目前遇到的主要问题。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="contact-list">
+          <div class="contact-item">
+            <strong>电话</strong>
+            <a href={`tel:${SITE.contact.phone.replace(/-/g, "")}`}>{SITE.contact.phone}</a>
+          </div>
+          <div class="contact-item">
+            <strong>邮箱</strong>
+            <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>
+          </div>
+          <div class="contact-item">
+            <strong>企业微信</strong>
+            <span>{SITE.contact.wechat}</span>
+          </div>
+          <div class="contact-item">
+            <strong>地址</strong>
+            <span>{SITE.contact.address}</span>
+          </div>
+        </div>
+
+        <article class="card">
+          <h2>下一步</h2>
+          <p>
+            正式联系方式与咨询流程确认后，这里会增加可用的在线表单（静态站可接入
+            免费/低成本的第三方表单服务，或后续增加后端页面）。
+          </p>
+          <p class="placeholder-note" style="margin-bottom:0">
+            TODO：补充商务负责人、咨询入口与企业微信二维码。
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

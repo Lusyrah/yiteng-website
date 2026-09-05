@@ -1,0 +1,5 @@
+# TODO: 正式域名确定后，把下面 sitemap 地址里的域名替换掉
+User-agent: *
+Allow: /
+
+Sitemap: https://yiteng.example.com/sitemap-index.xml

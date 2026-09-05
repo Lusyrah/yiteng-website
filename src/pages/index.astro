@@ -1,0 +1,159 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../config";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "AI GEO（生成式引擎优化）",
+  name: "弈藤 AI GEO 服务",
+  description:
+    "面向国内主流 AI 搜索与对话助手的品牌可见度与推荐优化服务。",
+  provider: { "@id": `${SITE.url}/#organization` },
+  areaServed: "CN",
+};
+
+const services = [
+  {
+    num: "01",
+    title: "品牌 AI 识别优化",
+    text: "梳理品牌实体信息、业务口径与资质信源，让 AI 能准确理解“你是谁、做什么、凭什么可信”。（内容待补充）",
+  },
+  {
+    num: "02",
+    title: "高质量内容建设",
+    text: "围绕用户会向 AI 提问的真实场景，生产结构化、可验证、易被引用的内容资产。（内容待补充）",
+  },
+  {
+    num: "03",
+    title: "权威信源与引用优化",
+    text: "把品牌信息铺设到知识图谱、百科、媒体与行业站点等 AI 高频参考信源。（内容待补充）",
+  },
+  {
+    num: "04",
+    title: "AI 效果监测与复盘",
+    text: "持续追踪品牌在国内 AI 产品中的提及率、回答准确度与推荐占比，迭代策略。（内容待补充）",
+  },
+];
+
+const steps = [
+  {
+    title: "现状与品牌扫描",
+    text: "先摸清品牌在主要 AI 入口目前“被怎么回答”。",
+  },
+  {
+    title: "策略与内容规划",
+    text: "确定目标问题、人群场景与内容信源地图。",
+  },
+  {
+    title: "结构化内容落地",
+    text: "分批建设可验证、易引用的品牌内容与页面。",
+  },
+  {
+    title: "监测迭代",
+    text: "用真实问答反馈持续优化回答质量与推荐表现。",
+  },
+];
+---
+
+<BaseLayout structuredData={[serviceSchema]}>
+  <!-- ============ 首屏 ============ -->
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">AI GEO · 生成式引擎优化</p>
+      <h1>让品牌在<span>国内主流 AI</span>的回答中被看见、被引用、被推荐</h1>
+      <p class="hero-lead">
+        弈藤实业面向百度 AI 搜索、豆包、Kimi、DeepSeek、通义等国内 AI
+        产品，围绕品牌识别、权威信源与高质量内容，帮助企业建立长期、可信的
+        AI 可见度。
+      </p>
+      <div class="actions">
+        <a class="btn btn--primary" href="/contact/">获取 GEO 诊断</a>
+        <a class="btn btn--outline" href="/services/">了解服务内容</a>
+      </div>
+      <!-- TODO: 首屏文案/主视觉/数据等真实素材到位后替换 -->
+    </div>
+  </section>
+
+  <!-- ============ 覆盖的 AI 入口 ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">覆盖范围</p>
+        <h2 class="section-title">国内主流 AI 产品与入口</h2>
+        <p class="section-intro">
+          我们在不同 AI 的回答机制与信源偏好上做针对性适配，平台清单可持续扩展。
+        </p>
+      </div>
+      <ul class="platform-chips" style="list-style:none;padding:0">
+        {SITE.aiPlatforms.map((platform) => <li class="chip">{platform}</li>)}
+      </ul>
+      <p class="placeholder-note">
+        TODO：确认最终重点覆盖的平台，可在 src/config.ts 中增删。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 服务概览 ============ -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">我们能做什么</p>
+        <h2 class="section-title">从“能被搜到”到“会被推荐”</h2>
+        <p class="section-intro">
+          GEO 不是堆关键词，而是让 AI 在组织答案时愿意引用你、认可你、推荐你。
+        </p>
+      </div>
+      <div class="grid-2">
+        {services.map((service) => (
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">{service.num}</span>
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="actions" style="margin-top:2.2rem">
+        <a class="btn btn--outline" href="/services/">查看完整服务方案</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 服务流程 ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">服务流程</p>
+        <h2 class="section-title">四步建立 AI 时代的品牌资产</h2>
+      </div>
+      <div class="steps">
+        {steps.map((step, index) => (
+          <div class="step">
+            <span class="step-num" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{step.title}</h3>
+            <p style="color:var(--body)">{step.text}</p>
+          </div>
+        ))}
+      </div>
+      <!-- TODO: 结合真实交付流程补充每阶段示例产出 -->
+    </div>
+  </section>
+
+  <!-- ============ 结尾 CTA ============ -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="card" style="text-align:center;padding:3rem 2rem">
+        <h2 class="section-title" style="margin-bottom:.6rem">
+          想看看你的品牌现在被国内 AI 怎么回答？
+        </h2>
+        <p style="color:var(--body);max-width:640px;margin:0 auto 1.6rem">
+          联系我们，我们可以先做一轮主流 AI 入口的品牌现状扫描，再讨论优化方案。
+        </p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn btn--primary" href="/contact/">预约咨询</a>
+          <a class="btn btn--outline" href="/about/">了解弈藤</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

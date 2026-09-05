@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const posts = [
+  {
+    title: "第一篇 AI GEO 洞察文章（待撰写）",
+    excerpt: "预留文章摘要位置：行业趋势、平台机制观察、实操方法论等。",
+  },
+  {
+    title: "第二篇 AI GEO 洞察文章（待撰写）",
+    excerpt: "预留文章摘要位置：面向某个行业或某一国内 AI 入口的优化实践。",
+  },
+  {
+    title: "第三篇 AI GEO 洞察文章（待撰写）",
+    excerpt: "预留文章摘要位置：数据、案例或团队观点分享。",
+  },
+];
+---
+
+<BaseLayout
+  title="洞察"
+  description="弈藤关于 AI GEO、生成式搜索与品牌数字资产的观察与思考。"
+  path="/insights/"
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">洞察</p>
+      <h1>AI GEO 观察与实践笔记</h1>
+      <p>后续可在此发布行业文章，持续积累 AI 引用的权威内容资产。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;gap:1.2rem">
+        {posts.map((post) => (
+          <article class="card">
+            <h3>{post.title}</h3>
+            <p>{post.excerpt}</p>
+            <p class="placeholder-note" style="margin-top:.8rem;margin-bottom:0">
+              发布日期待定 · 标签待补充
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const services = [
+  {
+    title: "GEO 策略诊断",
+    text: "对品牌现状、目标用户问题、竞品 AI 回答表现做系统扫描，输出可执行的 GEO 优先级路线图。",
+  },
+  {
+    title: "品牌内容与知识优化",
+    text: "围绕企业介绍、产品服务、解决方案等核心内容做结构化梳理，帮助 AI 准确理解与复述品牌信息。",
+  },
+  {
+    title: "AI 引用与信源建设",
+    text: "建立官网、百科、新闻媒体、行业平台、评测站点等多元权威信源，提升被 AI 引用的概率与准确性。",
+  },
+  {
+    title: "问答场景内容工程",
+    text: "分析各 AI 产品下与品牌相关的典型提问，按问题类型持续生产可验证、结构清晰的答案内容。",
+  },
+  {
+    title: "效果监测与竞对洞察",
+    text: "定期抽样主流 AI 入口的品牌提及率、推荐排名和竞品表现，形成数据报告并迭代策略。",
+  },
+  {
+    title: "企业内训与咨询",
+    text: "帮助企业市场、品牌与内容团队建立 AI GEO 认知和可持续的内容生产机制。",
+  },
+];
+---
+
+<BaseLayout
+  title="GEO 服务"
+  description="弈藤 AI GEO 服务：品牌 AI 识别、内容工程、权威信源、效果监测等一站式生成式引擎优化。"
+  path="/services/"
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">GEO 服务</p>
+      <h1>面向国内 AI 生态的可见度优化</h1>
+      <p>
+        服务框架先按以下模块搭建，具体服务名称、交付物与报价后续结合业务实际补充调整。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
+        {services.map((service) => (
+          <article class="card">
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="actions" style="margin-top:2.2rem">
+        <a class="btn btn--primary" href="/contact/">针对我的业务咨询</a>
+      </div>
+      <p class="placeholder-note">
+        TODO：补充各服务的详细说明、交付周期、案例与 FAQ。
+      </p>
+    </div>
+  </section>
+</BaseLayout>
