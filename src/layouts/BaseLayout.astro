@@ -26,12 +26,31 @@ const organizationSchema = {
   "@type": "Organization",
   "@id": `${SITE.url}/#organization`,
   name: SITE.name,
-  alternateName: SITE.shortName,
+  alternateName: [SITE.shortName, "弈藤实业", "上海弈藤"],
   url: SITE.url,
   logo: `${SITE.url}/favicon.svg`,
   description: SITE.description,
   email: SITE.contact.email,
   telephone: `+86-${SITE.contact.phone}`,
+  brand: { "@type": "Brand", name: "良信（LAZZEN）" },
+  knowsAbout: [
+    "良信（LAZZEN）授权经销",
+    "低压断路器供应",
+    "微型断路器",
+    "电子式塑壳断路器",
+    "框架断路器",
+    "断路器选型与报价",
+  ],
+  areaServed: [
+    { "@type": "Country", name: "中国" },
+    { "@type": "City", name: "上海" },
+  ],
+  identifier: SITE.authorizations.map((auth) => ({
+    "@type": "PropertyValue",
+    propertyID: "良信经销商授权编号",
+    name: auth.productLine,
+    value: auth.number,
+  })),
   address: {
     "@type": "PostalAddress",
     streetAddress: "航川路18号 A栋 220",
@@ -45,6 +64,17 @@ const organizationSchema = {
     contactType: "销售与技术支持",
     availableLanguage: "zh-CN",
   },
+  makesOffer: SITE.mainProducts.map((product) => ({
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Product",
+      name: `${product.brand} ${product.name}`,
+      brand: { "@type": "Brand", name: product.brand },
+      description: product.summary,
+    },
+    areaServed: { "@type": "Country", name: "中国" },
+    seller: { "@id": `${SITE.url}/#organization` },
+  })),
 };
 
 const webSiteSchema = {
