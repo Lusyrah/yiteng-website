@@ -1,13 +1,13 @@
 // 全站核心配置：公司信息、联系方式、品牌与产品、导航均在此维护。
-// TODO: 域名购买后替换 domain/url，并同步 astro.config.mjs、public/robots.txt。
+// 正式域名已上线：修改时需同步 astro.config.mjs 与 public/robots.txt。
 export const SITE = {
   name: "上海弈藤实业有限公司",
   shortName: "弈藤",
   city: "上海",
   lang: "zh-CN",
 
-  domain: "yiteng.example.com",
-  url: "https://yiteng.example.com",
+  domain: "www.yitengbot.com",
+  url: "https://www.yitengbot.com",
 
   description:
     "上海弈藤实业有限公司是良信（LAZZEN）授权经销商，常备良信全系列与常熟开关高端断路器产品，主营微型断路器、电子式塑壳断路器、框架断路器，提供选型、报价、现货、配送、技术支持与开票一站式服务。",

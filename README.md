@@ -41,7 +41,7 @@ npm run preview
 
 ## 上线前 TODO
 
-1. 购买并确定正式域名，替换 `src/config.ts`、`astro.config.mjs`、`public/robots.txt` 中的 `yiteng.example.com`。
+1. 正式域名：`https://www.yitengbot.com`（ICP 备案已通过）。如需更换域名，同步修改 `src/config.ts`、`astro.config.mjs`、`public/robots.txt`。
 2. 确认“服务区域”表述：当前授权书文本为上海范围经销商，页面按“总部上海 + 面向全国客户服务”表述，避免发布为“全国授权”。
 3. 确认是否公开授权书扫描件，以及是否补充常熟开关授权文件。
 4. 根据实际常备库存完善各系列现货/订货说明。
