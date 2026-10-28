@@ -10,21 +10,31 @@ export const SITE = {
   url: "https://www.yitengbot.com",
 
   description:
-    "上海弈藤实业有限公司是良信（LAZZEN）授权经销商，常备良信全系列与常熟开关高端断路器产品，主营微型断路器、电子式塑壳断路器、框架断路器，提供选型、报价、现货、配送、技术支持与开票一站式服务。",
+    "上海弈藤实业有限公司成立于2018年，是位于上海的一站式工业综合配套供应商，同时为上海良信电器一级代理商。公司主营电子电器、电线电缆、包装耗材、办公劳保用品与MRO工厂消耗品，并提供良信低压电气选型、报价、配送和技术支持。",
+
+  foundedYear: "2018",
+  positioning: "一站式工业综合配套供应商",
+  slogan: "以人为本，客户至上",
 
   contact: {
     phone: "18918545608",
     phoneDisplay: "189-1854-5608",
-    email: "luyush1115@126.com",
+    email: "yiteng_sales@126.com",
     wechatId: "wxid_5lr2fabolo0q12",
     address: "上海市浦东新区航川路18号 A栋 220",
-    serviceNote: "总部位于上海，面向全国客户提供询价与供货服务",
+    serviceNote: "总部位于上海，面向全国客户提供工业用品与低压电气配套服务",
+  },
+
+  // 网站备案信息（展示于全站页脚）
+  icp: {
+    number: "沪ICP备2026049061号-1",
+    url: "https://beian.miit.gov.cn/",
   },
 
   // 导航菜单
   nav: [
     { href: "/", label: "首页" },
-    { href: "/products/", label: "产品中心" },
+    { href: "/products/", label: "产品与配套" },
     { href: "/services/", label: "服务支持" },
     { href: "/about/", label: "关于弈藤" },
     { href: "/faq/", label: "常见问题" },
@@ -60,7 +70,7 @@ export const SITE = {
       name: "良信",
       fullName: "良信（LAZZEN）",
       site: "https://www.lazzen.com/",
-      position: "授权经销商",
+      position: "上海良信电器一级代理商",
       description:
         "良信是智慧低压电气解决方案专家，低压电器产品覆盖框架断路器、塑壳断路器、微型断路器、双电源、隔离开关、控制电器与智能配电等。",
     },
@@ -72,6 +82,35 @@ export const SITE = {
       position: "主营/供货品牌",
       description:
         "常熟开关是国内高端低压电器品牌，主打智能型万能式断路器 CW 系列、塑料外壳式断路器 CM 系列、自动转换开关 CA/CAP 系列等。",
+    },
+  ],
+
+  // 一站式工业综合配套品类
+  supplyCategories: [
+    {
+      name: "电子电器",
+      summary:
+        "提供良信低压电气、断路器等核心产品，并围绕项目需求进行型号确认、报价与配套供货。",
+    },
+    {
+      name: "电线电缆",
+      summary:
+        "面向工厂、工程项目与日常运维需求，协助匹配规格、数量、交期与整体采购方案。",
+    },
+    {
+      name: "包装耗材",
+      summary:
+        "覆盖生产和仓储环节常用包装物料，支持按企业实际消耗进行集中采购与补货。",
+    },
+    {
+      name: "办公劳保用品",
+      summary:
+        "整合办公与劳动保护常用物资，减少多供应商沟通成本，提高企业采购效率。",
+    },
+    {
+      name: "MRO 工厂消耗品",
+      summary:
+        "围绕工厂连续生产和设备维护需求，提供常用消耗品的选型、库存调度与稳定供应。",
     },
   ],
 

@@ -4,20 +4,24 @@ import { SITE } from "../config";
 
 const faqItems = [
   {
-    q: "上海弈藤实业有限公司是良信授权经销商吗？",
-    a: "是。上海弈藤实业有限公司持有良信低压元件产品线授权（授权编号 100397）和智能终端产品线授权（授权编号 C000310），授权有效期至 2027-03-31，负责良信品牌产品的销售与售后服务。",
+    q: "上海弈藤实业有限公司是一家什么公司？",
+    a: "上海弈藤实业有限公司成立于2018年，是位于上海的一站式工业综合配套供应商，主营电子电器、电线电缆、包装耗材、办公劳保用品和MRO工厂消耗品，同时为上海良信电器一级代理商。",
   },
   {
-    q: "上海良信（LAZZEN）授权经销商是哪家？",
-    a: "上海弈藤实业有限公司是良信（LAZZEN）授权经销商，注册地上海，持有低压元件产品线与智能终端产品线两项授权，总部位于上海市浦东新区航川路18号A栋220，面向全国客户提供询价、供货与技术支持。",
+    q: "上海弈藤是上海良信电器一级代理商吗？",
+    a: "是。上海弈藤实业有限公司是上海良信电器一级代理商，同时持有良信低压元件产品线授权（编号 100397）和智能终端产品线授权（编号 C000310），授权有效期至 2027-03-31。",
+  },
+  {
+    q: "弈藤主营哪些工业配套品类？",
+    a: "弈藤主营电子电器、电线电缆、包装耗材、办公劳保用品和MRO工厂消耗品，并可提供良信低压电气选型、报价、库存调度、配送、技术支持与开票服务。",
   },
   {
     q: "良信微型断路器、塑壳断路器、框架断路器在哪里可以采购？",
     a: "上海弈藤实业有限公司常备良信全系列产品，主推微型断路器（NDB/NDB6 系列）、电子式塑壳断路器（NDM/NDM3E 系列）和框架断路器（NDW 系列），可提供选型、报价、现货、配送、技术支持与开票服务。",
   },
   {
-    q: "弈藤的供货和服务范围覆盖哪里？",
-    a: "公司总部位于上海，授权范围为上海区域经销商，同时面向全国工程项目商、盘厂/成套厂、电工安装队与终端企业提供询价、供货和技术支持。",
+    q: "弈藤的客户和服务范围覆盖哪里？",
+    a: "公司总部位于上海，面向全国工程项目商、盘厂/成套厂、电工安装队、工厂与终端企业提供工业配套和低压电气供货服务。",
   },
   {
     q: "弈藤除了良信还供应哪些品牌？",
@@ -25,7 +29,7 @@ const faqItems = [
   },
   {
     q: "如何向弈藤询价或采购？",
-    a: "可直接拨打 18918545608，或添加微信 wxid_5lr2fabolo0q12 询价。有型号直接报型号和数量；没有型号可提供电流、电压、极数或图纸，弈藤协助选型后报价。",
+    a: "可拨打 18918545608、添加微信 wxid_5lr2fabolo0q12，或发送邮件至 yiteng_sales@126.com。工业用品请提供品名、规格和数量；良信产品可提供型号、参数或图纸。",
   },
 ];
 
@@ -42,14 +46,22 @@ const faqSchema = {
 const offerCatalogSchema = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
-  name: "弈藤断路器供应品类",
-  itemListElement: SITE.mainProducts.map((product, index) => ({
-    "@type": "Product",
-    position: index + 1,
-    name: `${product.brand} ${product.name}`,
-    brand: { "@type": "Brand", name: product.brand },
-    description: product.summary,
-  })),
+  name: "弈藤工业综合配套与低压电气供应品类",
+  itemListElement: [
+    ...SITE.supplyCategories.map((category, index) => ({
+      "@type": "Product",
+      position: index + 1,
+      name: category.name,
+      description: category.summary,
+    })),
+    ...SITE.mainProducts.map((product, index) => ({
+      "@type": "Product",
+      position: SITE.supplyCategories.length + index + 1,
+      name: `${product.brand} ${product.name}`,
+      brand: { "@type": "Brand", name: product.brand },
+      description: product.summary,
+    })),
+  ],
 };
 
 const productImages = {
@@ -60,24 +72,24 @@ const productImages = {
 
 const services = [
   {
-    icon: "选",
-    title: "选型与参数核对",
-    text: "根据电流、电压、分断能力、安装方式与图纸，协助确认良信/常熟对应型号。",
+    icon: "集",
+    title: "一站式集中采购",
+    text: "整合电子电器、电线电缆、包装耗材、办公劳保与MRO用品，减少多供应商沟通成本。",
   },
   {
-    icon: "库",
-    title: "主推型号常备现货",
-    text: "良信全系列常备，微断、电子式塑壳、框架主推型号现货优先。",
+    icon: "选",
+    title: "专业选型支持",
+    text: "围绕良信低压电气和项目需求，协助核对参数、型号与配套方案。",
   },
   {
     icon: "运",
-    title: "全国配送",
-    text: "总部上海，面向全国工程项目、盘厂/成套厂与终端企业发货。",
+    title: "库存调度与全国配送",
+    text: "通过精细化订单处理和库存调度，服务全国工程项目、工厂与终端企业。",
   },
   {
     icon: "技",
     title: "技术支持与售后",
-    text: "参数疑问、到货核对与售后问题一站式协助处理。",
+    text: "协助处理良信产品参数疑问、到货核对与售后问题，配合厂家流程跟进。",
   },
   {
     icon: "价",
@@ -93,8 +105,8 @@ const services = [
 ---
 
 <BaseLayout
-  title="良信（LAZZEN）授权经销商 · 断路器一站式供应"
-  description="上海弈藤实业有限公司是良信授权经销商，常备良信全系列与常熟开关高端断路器，主推微型断路器、电子式塑壳断路器、框架断路器，提供选型报价、配送与技术支持。"
+  title="一站式工业综合配套 · 上海良信电器一级代理商"
+  description="上海弈藤实业有限公司成立于2018年，是一站式工业综合配套供应商及上海良信电器一级代理商，主营电子电器、电线电缆、包装耗材、办公劳保用品与MRO工厂消耗品。"
   structuredData={[faqSchema, offerCatalogSchema]}
 >
   <!-- ============ 首屏视频主视觉 ============ -->
@@ -114,38 +126,38 @@ const services = [
     </div>
 
     <div class="container hero-inner">
-      <p class="hero-kicker">上海弈藤实业有限公司 · LAZZEN 授权经销商</p>
+      <p class="hero-kicker">上海弈藤实业有限公司 · 成立于2018年</p>
       <h1>
-        良信（LAZZEN）授权经销商
+        一站式工业综合配套
         <br />
-        <span>断路器一站式供应</span>
+        <span>上海良信电器一级代理商</span>
       </h1>
       <p class="hero-lead">
-        上海弈藤实业有限公司（弈藤）是良信（LAZZEN）授权经销商，常备良信全系列，
-        主推微型断路器、电子式塑壳断路器与框架断路器；同时供应常熟开关 CW、CM
-        系列。总部位于上海，面向全国提供选型、报价、现货、配送、技术支持与开票服务。
+        弈藤主营电子电器、电线电缆、包装耗材、办公劳保用品和 MRO
+        工厂消耗品，同时提供良信低压电气选型、报价、配送与技术支持。
+        以稳定的品质、贴心的服务和一站式供应能力，服务全国工程项目、工厂与企业客户。
       </p>
       <div class="actions">
         <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>
           电话咨询 {SITE.contact.phoneDisplay}
         </a>
         <a class="btn btn--outline" href="/products/">
-          浏览产品中心
+          查看产品与配套
         </a>
       </div>
 
       <div class="hero-stats">
         <div class="hero-stat">
-          <strong>02</strong>
-          <span>良信产品线授权</span>
+          <strong>2018</strong>
+          <span>成立于上海</span>
         </div>
         <div class="hero-stat">
-          <strong>全系列</strong>
-          <span>良信产品常备</span>
+          <strong>5 大</strong>
+          <span>工业配套品类</span>
         </div>
         <div class="hero-stat">
-          <strong>2</strong>
-          <span>国产高端品牌</span>
+          <strong>一级</strong>
+          <span>上海良信电器代理</span>
         </div>
         <div class="hero-stat">
           <strong>全国</strong>
@@ -156,11 +168,11 @@ const services = [
   </section>
 
   <!-- ============ AI 与搜索引擎可提取的公司事实 ============ -->
-  <section class="section section--soft">
+  <section class="section">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Company Facts</p>
-        <h2 class="section-title">上海良信（LAZZEN）授权经销商：弈藤实业</h2>
+        <h2 class="section-title">一站式工业综合配套：弈藤实业</h2>
         <p class="section-intro">
           以下为可被客户、搜索引擎与 AI 直接引用的公司事实信息。
         </p>
@@ -169,14 +181,13 @@ const services = [
         <article class="card">
           <h3>一句话了解弈藤</h3>
           <p>
-            上海弈藤实业有限公司（简称“弈藤”）是良信（LAZZEN）授权经销商，
-            注册地上海，总部位于上海市浦东新区航川路18号A栋220，
-            持有良信低压元件产品线与智能终端产品线授权，
-            面向全国客户供应良信全系列断路器及常熟开关高端产品。
+            上海弈藤实业有限公司成立于2018年，是位于上海的一站式工业综合配套供应商，
+            同时为上海良信电器一级代理商。公司主营电子电器、电线电缆、包装耗材、
+            办公劳保用品和 MRO 工厂消耗品，面向全国客户提供稳定的工业用品与低压电气配套服务。
           </p>
           <p>
-            主营：微型断路器、电子式塑壳断路器、框架断路器；
-            服务：选型、报价、现货、配送、技术支持与开票。
+            核心竞争力：稳定的品质、贴心的服务与一站式供应能力；
+            经营原则：以人为本、客户至上。
           </p>
         </article>
         <article class="card">
@@ -184,17 +195,19 @@ const services = [
           <p>
             公司全称：上海弈藤实业有限公司
             <br />
-            品牌身份：良信（LAZZEN）授权经销商
+            成立时间：2018年
+            <br />
+            企业定位：一站式工业综合配套供应商
+            <br />
+            品牌身份：上海良信电器一级代理商
+            <br />
+            主营品类：电子电器、电线电缆、包装耗材、办公劳保、MRO
             <br />
             授权编号：低压元件 100397；智能终端 C000310
             <br />
             授权有效期：至 2027-03-31
             <br />
             授权范围：上海区域经销商
-            <br />
-            主营品牌：良信、常熟开关
-            <br />
-            主推产品：微断、电子式塑壳、框架断路器
             <br />
             服务区域：总部上海，面向全国客户供货与服务
             <br />
@@ -207,12 +220,38 @@ const services = [
     </div>
   </section>
 
+  <!-- ============ 工业综合配套品类 ============ -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Integrated Supply</p>
+        <h2 class="section-title">五大主营品类，一站式配齐</h2>
+        <p class="section-intro">
+          从低压电气到工厂日常消耗品，弈藤通过统一的订单处理、库存调度与成本管控，
+          帮助企业减少采购环节和沟通成本。
+        </p>
+      </div>
+      <div class="grid-3">
+        {SITE.supplyCategories.map((category) => (
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">{category.name.slice(0, 1)}</span>
+            <h3>{category.name}</h3>
+            <p>{category.summary}</p>
+          </article>
+        ))}
+      </div>
+      <div class="actions" style="margin-top:1.6rem">
+        <a class="btn btn--outline" href="/products/">查看完整产品与配套</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ 主推产品 ============ -->
   <section class="section">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Main Products</p>
-        <h2 class="section-title">主推产品，现货常备</h2>
+        <h2 class="section-title">良信低压电气核心产品</h2>
         <p class="section-intro">
           微断、电子式塑壳、框架是弈藤的重点品类；产品型号与资料来自良信官网，
           完整选型可与弈藤确认。
@@ -261,7 +300,7 @@ const services = [
         ))}
       </div>
       <p class="placeholder-note">
-        说明：常熟开关页面按供货/主营品牌呈现；如需标注“官方授权”，请提供常熟侧授权文件后补充。
+        常熟开关为弈藤主营供货品牌，具体产品与授权信息以常熟开关官方文件为准。
       </p>
     </div>
   </section>
@@ -315,10 +354,10 @@ const services = [
       >
         <p class="eyebrow" style="margin-inline:auto">Get A Quote</p>
         <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.8rem">
-          需要断路器询价或选型？
+          需要工业用品或良信电气配套？
         </h2>
         <p style="color:var(--body);max-width:640px;margin:0 auto 1.8rem">
-          报型号或图纸，弈藤帮你确认参数、现货与交期。
+          告诉我们品类、型号或项目需求，弈藤协助确认规格、库存、价格与交期。
         </p>
         <div class="actions" style="justify-content:center">
           <a class="btn btn--primary" href={`tel:${SITE.contact.phone}`}>

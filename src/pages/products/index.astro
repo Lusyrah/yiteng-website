@@ -5,29 +5,52 @@ import { LAZZEN_OFFICIAL } from "../../data/lazzen";
 ---
 
 <BaseLayout
-  title="产品中心"
-  description="上海弈藤实业有限公司产品中心：良信全系列断路器、常熟开关 CW/CM 系列，主营微型断路器、电子式塑壳断路器与框架断路器。"
+  title="产品与工业综合配套"
+  description="上海弈藤实业有限公司提供电子电器、电线电缆、包装耗材、办公劳保用品、MRO工厂消耗品，以及良信全系列断路器与常熟开关 CW/CM 系列。"
   path="/products/"
 >
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow">产品中心</p>
-      <h1>良信全系列 · 常熟高端断路器</h1>
+      <p class="eyebrow">产品与配套</p>
+      <h1>工业用品一站式集采 · 良信低压电气供应</h1>
       <p>
-        弈藤常备良信（LAZZEN）全系列产品，并供应常熟开关 CW、CM
-        等系列；主推微型断路器、电子式塑壳断路器和框架断路器。
+        上海弈藤是上海良信电器一级代理商，同时供应电线电缆、包装耗材、
+        办公劳保用品和 MRO 工厂消耗品，为工程项目与工厂企业提供一站式配套。
       </p>
     </div>
   </section>
 
-  <!-- 良信 -->
+  <!-- 工业配套品类 -->
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">品牌一</p>
-        <h2 class="section-title">良信（LAZZEN）</h2>
+        <p class="eyebrow">Industrial Supply</p>
+        <h2 class="section-title">五大主营品类</h2>
         <p class="section-intro">
-          上海弈藤实业有限公司为良信低压元件产品线与智能终端产品线授权经销商，产品介绍以良信官网为准。
+          统一处理订单、库存与交付，帮助企业提升采购效率、降低沟通与运转成本。
+        </p>
+      </div>
+      <div class="grid-3">
+        {SITE.supplyCategories.map((category) => (
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">{category.name.slice(0, 1)}</span>
+            <h3>{category.name}</h3>
+            <p>{category.summary}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 良信 -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">低压电气</p>
+        <h2 class="section-title">良信（LAZZEN）全系列产品</h2>
+        <p class="section-intro">
+          上海弈藤是上海良信电器一级代理商，持有良信低压元件产品线与智能终端产品线授权，
+          产品介绍以良信官网为准。
         </p>
       </div>
       <div class="grid-3">
@@ -77,10 +100,10 @@ import { LAZZEN_OFFICIAL } from "../../data/lazzen";
   </section>
 
   <!-- 常熟开关 -->
-  <section class="section section--soft">
+  <section class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">品牌二</p>
+        <p class="eyebrow">高端断路器</p>
         <h2 class="section-title">常熟开关</h2>
         <p class="section-intro">
           常熟开关制造有限公司是国产高端低压电器品牌，主打智能型万能式断路器与塑壳断路器。
@@ -108,7 +131,7 @@ import { LAZZEN_OFFICIAL } from "../../data/lazzen";
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section--soft">
     <div class="container">
       <div class="card" style="text-align:center">
         <h2 style="margin-bottom:.8rem">需要确认具体型号与现货？</h2>

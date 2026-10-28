@@ -5,14 +5,14 @@ import { SITE } from "../config";
 
 <BaseLayout
   title="关于弈藤"
-  description="上海弈藤实业有限公司位于上海市浦东新区，是良信（LAZZEN）授权经销商，主营微型断路器、电子式塑壳断路器、框架断路器及常熟开关高端产品。"
+  description="上海弈藤实业有限公司成立于2018年，是一站式工业综合配套供应商及上海良信电器一级代理商，主营电子电器、电线电缆、包装耗材、办公劳保用品与MRO工厂消耗品。"
   path="/about/"
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">关于弈藤</p>
       <h1>上海弈藤实业有限公司</h1>
-      <p>一家专注于国产高端断路器供应与服务的企业。</p>
+      <p>一站式工业综合配套供应商 · 上海良信电器一级代理商</p>
     </div>
   </section>
 
@@ -22,19 +22,26 @@ import { SITE } from "../config";
         <article class="card">
           <h2>公司简介</h2>
           <p>
-            上海弈藤实业有限公司注册于上海，经营地址位于上海市浦东新区航川路 18 号 A
-            栋 220，是良信（LAZZEN）授权经销商。
+            上海弈藤实业有限公司于 2018 年成立于上海，是一站式工业综合配套供应商，
+            同时为上海良信电器一级代理商。公司主营电子电器、电线电缆、包装耗材、
+            办公劳保用品和 MRO 工厂消耗品。
           </p>
           <p>
-            公司常备良信全系列产品，主推微型断路器、电子式塑壳断路器与框架断路器；
-            同时供应常熟开关 CW、CM 等国产高端断路器，服务工程项目商、盘厂/成套厂、
-            电工安装队与终端企业。
+            公司以稳定的品质、贴心的服务和一站式供应能力为核心竞争力，通过专业选型、
+            订单处理、库存调度与配送，为工程项目商、盘厂/成套厂、电工安装队、工厂与
+            终端企业提供工业用品和低压电气配套服务。
           </p>
         </article>
         <article class="card">
           <h2>企业信息</h2>
           <p>
             公司名称：{SITE.name}
+            <br />
+            成立时间：{SITE.foundedYear} 年
+            <br />
+            企业定位：{SITE.position}
+            <br />
+            品牌身份：上海良信电器一级代理商
             <br />
             经营地址：{SITE.contact.address}
             <br />
@@ -52,10 +59,38 @@ import { SITE } from "../config";
   <section class="section section--soft">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">授权与合作</p>
-        <h2 class="section-title">良信经销商授权</h2>
+        <p class="eyebrow">Our Approach</p>
+        <h2 class="section-title">稳定品质与一站式供应能力</h2>
         <p class="section-intro">
-          弈藤持有的良信授权如下，可在业务洽谈中出示授权文件：
+          公司秉持“以人为本、客户至上”的经营原则，重视人才培养与内部管理提升，
+          通过精细化运营为客户提供高质量、高效率服务。
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>稳定品质</h3>
+          <p>从正规渠道采购，关注产品一致性与交付质量，让企业采购更放心。</p>
+        </article>
+        <article class="card">
+          <h3>精细运营</h3>
+          <p>通过订单处理、库存调度与成本管控，提升采购与供应链运转效率。</p>
+        </article>
+        <article class="card">
+          <h3>长期协同</h3>
+          <p>以诚信经营和持续服务建立长期合作，成为客户值得信赖的工业伙伴。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">LAZZEN</p>
+        <h2 class="section-title">良信低压电气配套方案</h2>
+        <p class="section-intro">
+          良信是智慧低压电气解决方案专家，产品及解决方案覆盖发电、输配电、用电全链路。
+          依托良信齐全的低压电气产品线，弈藤可为客户提供专业可靠的配套方案。
         </p>
       </div>
       <div class="grid-2">
@@ -75,25 +110,29 @@ import { SITE } from "../config";
         ))}
       </div>
       <p class="placeholder-note">
-        注：按授权书文本，授权范围为上海区域经销商；如需在官网直接表述“全国授权”，请提供覆盖全国的授权文件后再修改。
+        弈藤是上海良信电器一级代理商，并持有上述产品线授权；授权文件可在业务洽谈时出示核验。
       </p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section--soft">
     <div class="container">
-      <div class="grid-3">
-        <div class="card">
-          <h3>正品保障</h3>
-          <p>授权渠道采购，可按需提供授权证明与厂家质量凭证。</p>
-        </div>
-        <div class="card">
-          <h3>响应速度</h3>
-          <p>主推型号常备现货，报价与交期确认尽量快速。</p>
-        </div>
-        <div class="card">
-          <h3>长期合作</h3>
-          <p>面向盘厂、工程商与终端企业建立长期稳定供货关系。</p>
+      <div
+        class="card"
+        style="padding:clamp(2rem,5vw,3.6rem);background:radial-gradient(60% 130% at 50% 0%, rgba(0,216,195,.11), transparent 70%), linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.02))"
+      >
+        <p class="eyebrow">Our Values</p>
+        <h2>先做人，后做事</h2>
+        <p>
+          上海弈藤坚守“先做人，后做事”的信念，坚持以优质产品和专业高效的服务满足客户需求。
+          客户的信赖与认可，是我们业务增长和提升竞争力的持续动力。
+        </p>
+        <p style="margin-bottom:1.4rem">
+          我们期待与您协同优化供应链组织、提升运转效率，携手共赢发展。
+        </p>
+        <div class="actions">
+          <a class="btn btn--primary" href="/contact/">联系弈藤</a>
+          <a class="btn btn--outline" href="/products/">查看产品与配套</a>
         </div>
       </div>
     </div>
